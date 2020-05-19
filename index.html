@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>Vue.js App</title>
+        <link href="main.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id="app">
+            <!-- この内側にテンプレートを書き込んでいく -->
+            <p>{{ list[2] }}</p>
+            <p>{{ num }}</p>
+            <p>{{ message.value }}</p>
+            <input type="text" v-bind:value="bind">
+            <p>{{ count }} 回クリックされたよ</p>
+            <button v-on:click="increment">カウントを増やす</button>
+            <div v-if="ok">v-ifテスト ok</div>
+            <div v-if="ng">v-ifテスト ng</div>
+            <ul>
+                <li v-for="(monster,index) in monsters" v-bind:key="monster.id">
+                    ID.{{monster.id}} name.{{monster.name}} hp.{{monster.hp}} <span v-if="monster.hp > 300"> つよい！</span>
+                    <span v-if="monster.hp < 50"> 瀕死</span>
+                    <button v-on:click="doRemove(index)">モンスターを削除</button>
+                    <button v-on:click="attack(index)">攻撃</button>
+                </li>
+            </ul>
+            名前<input v-model="name">
+            <button v-on:click="doAdd">モンスターを追加</button>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
